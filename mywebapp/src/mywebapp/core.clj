@@ -1,7 +1,7 @@
 (ns mywebapp.core
   (:require [compojure.core :refer :all]
-            [org.httpkit.server :refer [run-server]]
-            [hiccup.core :as hiccup]))
+            [hiccup.core :as hiccup]
+            [ring.adapter.jetty :as jetty]))
 
 (defroutes myapp
   (GET "/hello/:name" [name]
@@ -12,4 +12,6 @@
             (str "Hello " name)]]])))
 
 (defn -main []
-  (run-server myapp {:port 5000}))
+  (jetty/run-jetty
+    (fn [req] {:status 200 :body "Hello World"})
+    {:port 5000}))
