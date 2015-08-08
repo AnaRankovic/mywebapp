@@ -1,17 +1,9 @@
 (ns mywebapp.core
-  (:require [compojure.core :refer :all]
-            [hiccup.core :as hiccup]
-            [ring.adapter.jetty :as jetty]))
+    (:require [compojure.core :refer :all]
+            [org.httpkit.server :refer [run-server]]))
 
-(defroutes myapp
-  (GET "/hello/:name" [name]
-    (hiccup/html
-      [:html
-        [:body
-          [:h1 {:class "title"}
-            (str "Hello " name)]]])))
+(defn myapp []
+  (println(slurp "http://clojure-doc.org/articles/content.html#tutorials-and-cookbooks")))
 
 (defn -main []
-  (jetty/run-jetty
-    (fn [req] {:status 200 :body "Hello World"})
-    {:port 5000}))
+(run-server myapp)) 
