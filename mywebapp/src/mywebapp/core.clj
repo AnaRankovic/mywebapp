@@ -2,7 +2,7 @@
   (:require [compojure.core :refer :all]
             [org.httpkit.server :refer [run-server]])) ; httpkit is a server
 
-(defroutes mywebapp
+(defroutes myapp
   (GET "/" [] "Show something")
   (POST "/" [] "Create something")
   (PUT "/" [] "Replace something")
