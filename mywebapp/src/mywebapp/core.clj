@@ -3,13 +3,6 @@
             [org.httpkit.server :refer [run-server]])) ; httpkit is a server
 
 (defroutes myapp
-  (GET "/" [] "Show something")
-  (POST "/" [] "Create something")
-  (PUT "/" [] "Replace something")
-  (PATCH "/" [] "Modify Something")
-  (DELETE "/" [] "Annihilate something")
-  (OPTIONS "/" [] "Appease something")
-  (HEAD "/" [] "Preview something"))
-
+  (GET "/" [] (fn [req] "Do something with req")))
 (defn -main []
   (run-server mywebapp {:port 5000}))
